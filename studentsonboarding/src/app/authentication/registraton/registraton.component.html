@@ -1,0 +1,60 @@
+<mat-card>
+    <mat-card-title>Register</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="registerForm" (ngSubmit)="submit()">
+            <p>
+                <mat-form-field>
+                    <mat-label>Username</mat-label>
+                    <input type="text" matInput formControlName="username">
+                </mat-form-field>
+            </p>
+            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                <div *ngIf="username.errors.required">
+                    Name is required.
+                </div>
+                <div *ngIf="username.errors.minlength">
+                    Name must be at least 4 characters long.
+                </div>
+            </div>
+            <p>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="email">
+                </mat-form-field>
+            </p>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                <div *ngIf="email.errors.required">
+                    Email is required.
+                </div>
+                <div *ngIf="email.errors.minlength">
+                    Email must be at least 8 characters long.
+                </div>
+                <div *ngIf="email.errors.email">
+                    Email must be a valid email address.
+                </div>
+            </div>
+            <p>
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password">
+                </mat-form-field>
+            </p>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                <div *ngIf="password.errors.required">
+                    Password is required.
+                </div>
+                <div *ngIf="password.errors.minlength">
+                    Password must be at least 8 characters long.
+                </div>
+            </div>
+
+            <p class="error-msg">{{messageToDisplay}}</p>
+
+            <div class="div-buttons">
+                <button type="submit" mat-raised-button color="primary" class="button" [disabled]="!registerForm.valid">Register</button>
+                <button mat-raised-button color="primary" class="button" [routerLink]="[('/login')]">Login</button>
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>

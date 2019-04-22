@@ -1,0 +1,37 @@
+.mat-card {
+    text-align: -webkit-center;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-card {
+    max-width: 70%;
+    margin: 2em auto;
+    text-align: center;
+}
+
+table {
+    width: 60%;
+}
+
+.button {
+    text-align: center;
+    margin: 20px;
+}
+
+.alert-danger {
+    padding: 5px;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1
+}
+
+.alert-danger hr {
+    border-top-color: #e4b9c0
+}
+
+.alert-danger .alert-link {
+    color: #843534
+}

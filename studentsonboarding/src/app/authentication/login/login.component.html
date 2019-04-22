@@ -1,0 +1,30 @@
+<mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="submit()">
+            <p>
+                <mat-form-field>
+                    <mat-label>Username</mat-label>
+                    <input type="text" matInput formControlName="username">
+                    <mat-icon matSuffix>perm_identity_outline</mat-icon>
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password">
+                    <mat-icon matSuffix>lock_outline</mat-icon>
+                </mat-form-field>
+            </p>
+
+            <p class="error-msg">{{messageToDisplay}}</p>
+
+            <div class="div-buttons">
+                <button type="submit" mat-raised-button color="primary" class="button" [disabled]="!loginForm.valid">Login</button>
+                <button mat-raised-button color="primary" class="button" [routerLink]="[('/register')]">Register</button>
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>

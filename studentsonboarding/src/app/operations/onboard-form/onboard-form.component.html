@@ -1,0 +1,82 @@
+<mat-card>
+    <mat-card-title>
+        {{formTitle}}
+    </mat-card-title>
+
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <table>
+                <tr>
+                    <td>Student Name</td>
+                    <td>
+                        <mat-form-field>
+                            <input type="text" matInput formControlName="studentName" placeholder="Name">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Category</td>
+                    <td>
+                        <mat-form-field>
+                            <mat-select (selectionChange)="setDocumentList(selected)" placeholder="Category" [(value)]="selected" formControlName="category">
+                                <mat-option value="indian">Indian</mat-option>
+                                <mat-option value="international">International</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Documents</td>
+                    <td>
+                        <ng-container formArrayName="documents" *ngFor="let document of form.controls['documents'].controls; let i = index">
+                            <mat-checkbox [formControlName]="i">{{documents[i].name}}</mat-checkbox><br>
+                        </ng-container>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date of Birth</td>
+                    <td>
+                        <mat-form-field>
+                            <input matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="dob">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker touchUi="true" #picker></mat-datepicker>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Father's Name</td>
+                    <td>
+                        <mat-form-field>
+                            <input type="text" matInput formControlName="fatherName" placeholder="Father's Name">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mother's Name</td>
+                    <td>
+                        <mat-form-field>
+                            <input type="text" matInput formControlName="motherName" placeholder="Mother's Name">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last Class Score</td>
+                    <td>
+                        <mat-form-field>
+                            <input type="text" pattern="[0-9]{3}" matInput formControlName="lastClassScore" placeholder="% (marks)">
+                        </mat-form-field>
+                        <div *ngIf="lastClassScore.invalid && (lastClassScore.dirty || lastClassScore.touched)" class="alert alert-danger">
+                            <div *ngIf="lastClassScore.errors">
+                                Score must be a numeric value.
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="button">
+                <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">{{btnOnboard}}</button>
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>

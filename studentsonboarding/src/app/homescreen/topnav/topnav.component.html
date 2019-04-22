@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+    <div fxHide.gt-xs>
+        <button mat-icon-button (click)="onToggleSidenav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <div>
+        <a routerLink="/default">Students Onboarding App</a>
+    </div>
+    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+            <li>
+                <mat-icon>face_outline</mat-icon>
+            </li>
+            <li class="dropdown-hover">
+                <span>{{username}}</span>
+                <div id="logoutMenu" class="dropdown-content bar-block border">
+                    <a routerLink="/logout" class="bar-item button">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</mat-toolbar>
